@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Untuk Kamu Yang Selalu Ada Di Fikiran</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=Poppins:wght@300;400&display=swap" rel="stylesheet">
+
+<style>
+body{
+    margin:0;
+    font-family:'Poppins', sans-serif;
+    background:linear-gradient(135deg,#ffd6e0,#ffeef3);
+    overflow:hidden;
+}
+
+/* ENVELOPE */
+.envelope{
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    width:220px;
+    height:150px;
+    background:#ff8fab;
+    border-radius:10px;
+    cursor:pointer;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:white;
+    font-weight:bold;
+    box-shadow:0 10px 25px rgba(0,0,0,0.2);
+    transition:0.5s;
+}
+
+.envelope:hover{
+    transform:translate(-50%,-50%) scale(1.05);
+}
+
+/* LETTER */
+.card{
+    display:none;
+    max-width:700px;
+    margin:60px auto;
+    background:rgba(255,255,255,0.8);
+    padding:30px;
+    border-radius:20px;
+    backdrop-filter:blur(10px);
+    box-shadow:0 10px 30px rgba(0,0,0,0.1);
+    animation:fadeIn 1.2s ease;
+}
+
+@keyframes fadeIn{
+    from{opacity:0; transform:translateY(20px);}
+    to{opacity:1;}
+}
+
+h1{
+    font-family:'Dancing Script', cursive;
+    text-align:center;
+    color:#e11d74;
+}
+
+p{ 
+    line-height:1.8; 
+    color:#4a2c2c; 
+}
+
+/* SIGNATURE */
+.signature{
+    margin-top:30px;
+    text-align:right;
+    font-family:'Dancing Script', cursive;
+    font-size:22px;
+    color:#e11d74;
+}
+
+/* HEART */
+.heart{
+    position:fixed;
+    top:-10px;
+    color:#ff4d88;
+    animation:fall linear infinite;
+}
+
+@keyframes fall{
+    to{ transform:translateY(110vh); }
+}
+</style>
+</head>
+
+<body>
+
+<div class="envelope" onclick="openLetter()">
+💌 Iqro Izaa
+</div>
+
+<div class="card" id="letter">
+<h1>Untuk Kamu Yang Selalu Ada Di Fikiran</h1>
+
+<p>Haii...</p>
+
+<p>
+Aku bingung kenapa rasanya kayak masih stuck di kamu,
+padahal aku sendiri yang pergi dari kamu...
+maaf ya, sekarang baru aku sadar kenapa dulu aku bisa
+ngelakuin hal sebodoh itu.
+</p>
+
+<p>
+Aku gak bisa maksa kamu buat balik lagi kayak dulu.
+Aku ngerti, mungkin perasaan kamu ke aku juga udah beda.
+Kalau keberadaan aku bikin kamu gak nyaman,
+tolong bilang ya... biar aku gak ganggu kamu lagi.
+</p>
+
+<p>
+Aku harap kamu selalu baik-baik aja.
+Aku selalu senang kalau lihat kamu bahagia,
+dan aku akan tetap dukung kamu, apapun itu,
+selama itu baik buat kamu.
+</p>
+
+<p>
+Dari semua yang pernah kita rencanakan,
+aku gak akan pernah lupa.
+Di dalam hati aku, selalu ada tempat spesial
+buat cerita kita yang singkat itu.
+</p>
+
+<p>
+Aku cuma mau kamu tau...
+aku masih sayang sama kamu.
+</p>
+
+<p>
+Aku nyesal, Iza...
+</p>
+
+<!-- SIGNATURE -->
+<p class="signature">
+dari aku, rayhan buat kamu izaa 💗
+</p>
+
+</div>
+
+<audio id="bgm" loop>
+<source src="https://cdn.pixabay.com/audio/2023/02/28/audio_6cb4fa6b77.mp3">
+</audio>
+
+<script>
+function openLetter(){
+    document.querySelector(".envelope").style.display="none";
+    document.getElementById("letter").style.display="block";
+
+    const audio=document.getElementById("bgm");
+    audio.volume=0.3;
+    audio.play();
+
+    // hearts
+    setInterval(()=>{
+        const heart=document.createElement("div");
+        heart.classList.add("heart");
+        heart.innerHTML="❤";
+        heart.style.left=Math.random()*100+"vw";
+        heart.style.animationDuration=(3+Math.random()*4)+"s";
+        heart.style.fontSize=(10+Math.random()*20)+"px";
+        document.body.appendChild(heart);
+        setTimeout(()=>heart.remove(),6000);
+    },300);
+}
+</script>
+
+</body>
+</html>
